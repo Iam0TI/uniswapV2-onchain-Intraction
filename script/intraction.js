@@ -29,8 +29,8 @@ async function main() {
     impersonatedSigner
   );
 
-  await USDT_Contract.approve(UniswapRouter, amountUSDT);
-  await pepe_Contract.approve(UniswapRouter, amountpepe);
+  await USDT_Contract.approve(ROUTER_ADDRESS, amountUSDT);
+  await pepe_Contract.approve(ROUTER_ADDRESS, amountpepe);
 
   const usdtBefore = await USDT_Contract.balanceOf(impersonatedSigner.address);
   const pepeBefore = await pepe_Contract.balanceOf(impersonatedSigner.address);
