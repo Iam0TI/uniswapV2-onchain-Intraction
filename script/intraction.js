@@ -13,7 +13,7 @@ async function main() {
 
   const amountUsdt = ethers.parseUnits("100", 6);
   const amountpepe = ethers.parseUnits("14000000", 18);
-  const amountUSDTMin = ethers.parseUnits("95", 6);
+  const amountUsdtMin = ethers.parseUnits("95", 6);
   const amountpepeMin = ethers.parseUnits("10000000", 18);
 
   const USDT_Contract = await ethers.getContractAt(
@@ -29,7 +29,7 @@ async function main() {
     impersonatedSigner
   );
 
-  await USDT_Contract.approve(ROUTER_ADDRESS, amountUSDT);
+  await USDT_Contract.approve(ROUTER_ADDRESS, amountUsdt);
   await pepe_Contract.approve(ROUTER_ADDRESS, amountpepe);
 
   const usdtBefore = await USDT_Contract.balanceOf(impersonatedSigner.address);
@@ -40,11 +40,11 @@ async function main() {
   console.log("pepeBefore :", pepeBefore);
 
   const addLiquidity = await ROUTER.addLiquidity(
-    USDCAddress,
-    pepeAddress,
-    amountUSDC,
+    USDT,
+    pepe,
+    amountUsdt,
     amountpepe,
-    amountUSDCMin,
+    amountUsdtMin,
     amountpepeMin,
     impersonatedSigner.address,
     deadline
